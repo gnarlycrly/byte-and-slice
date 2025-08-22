@@ -15,7 +15,6 @@
 - **Frontend:** HTML, CSS  
 - **Backend:** Python (Flask)  
 - **Database:** PostgreSQL  
-- **Other:** Jinja2 templates, SQLAlchemy ORM  
 
 ---
 
@@ -25,6 +24,6 @@
 - 🍕 **Customizable Toppings** – Fully interactive pizza builder  
 - 📦 **Order Submission** – Orders stored in the database for fulfillment  
 - 🗄️ **Database Integration** – Persistent order history using PostgreSQL  
-- 🎨 **Responsive UI** – Built with clean, mobile-friendly HTML + CSS  
+- 🎨 **Responsive UI** – Built with clean, desktop-friendly HTML + CSS  
 
 ---
