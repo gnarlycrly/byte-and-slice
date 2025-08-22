@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<head>
+  <title>The Byte & Slice</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    body { /* all the main content */ 
+      height: 95vh; /* changing this changes how far up everyhthing goes*/
+      background-color: #d28bcc;
+      font-family: 'Press Start 2P';
+      color: #ffeecf;
+      display: flex;
+      justify-content: flex-start; 
+      align-items: center;
+      padding-left: 260px; 
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container { /* groups the title and buttons together */ 
+      z-index: 2; /* makes sure they can overlay the image*/
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 20px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #ffe14f;
+      margin: 0;
+    }
+
+    .name {
+      font-size: 4.3rem;
+      line-height: 1.3;
+    }
+
+    .buttonbox { 
+      display: flex;
+      gap: 60px;
+      margin-top: 20px;
+    }
+
+    button {
+      font-size: 1.4rem;
+      padding: 28px 60px;
+      font-family: 'Press Start 2P';
+      border: none;
+    }
+
+    .order-btn {
+      background-color: #e84118;
+      color: #ffe14f;
+      box-shadow: 10px 10px #8b0000; 
+    }
+
+    .order-btn:hover { /* changes colors when you hover over it */ 
+      background-color: #ff5e3a;
+    }
+
+    .manager-btn {
+      background-color: #a14590;
+      color: #ffeecf;
+      box-shadow: 10px 10px #70205d;
+    }
+
+    .manager-btn:hover { /* changes colors when you hover over it */ 
+      background-color: #ad569d;
+    }
+
+    .floating-pizza-img { /* pizza image fixed on page behind everything not in container */
+      position: fixed;
+      top: 70px;
+      right: 0;
+      width: 660px;
+      z-index: 0;
+    }
+        .reference {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 0.6rem;
+      color: #ffeecf;
+      opacity: 0.7;
+      font-family: 'Press Start 2P';
+      z-index: 5;
+    }
+
+  </style>
+</head>
+
+<body>
+  <img class="floating-pizza-img" src="static/float-pizza.png">
+
+  <div class="container">
+    <h1>WELCOME TO</h1>
+
+    <div class="name">The Byte<br>and<br>Slice</div>
+
+    <div class="buttonbox">
+      <form action="/customerpage" method="POST">
+        <button class="order-btn" type="submit">ORDER NOW</button>
+      </form>
+
+      <form action="/managerpage">
+        <button class="manager-btn" type="submit">
+          Manager Login <span class="cursor">&#x25B6;</span>
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+  <div class="reference">Illustration & Animation by Laurentiu Lunic</div>
+
+</body>
+
+</html>

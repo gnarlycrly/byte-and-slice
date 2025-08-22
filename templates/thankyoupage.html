@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Thank You!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+        background-color: #d28bcc;
+        font-family: 'Press Start 2P';
+        color: #ffeecf;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .container {
+        max-width: 700px;
+        width: 100%;
+        padding: 40px 30px;
+        background-color: #00000040;
+        border-radius: 25px;
+        box-shadow: 10px 10px #a14590;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #ffe14f;
+        margin-bottom: 25px;
+    }
+
+    .name { 
+        color: #ffe14f;
+    }
+
+    .address {
+        font-size: 1rem;
+        color: #ffe14f;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 25px;
+    }
+
+    .summary-box {
+        background-color: #fff5c81f;
+        border: 2px #ffe14f;
+        border-radius: 14px;
+        padding: 25px;
+        margin: 30px 0;
+        text-align: left;
+    }
+
+    .section-title {
+        color: #ffe14f;
+        font-size: 1rem;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px dashed #ffe14f;
+        padding-bottom: 4px;
+    }
+
+    .pizza-item {
+        font-size: 0.7rem;
+        margin: 4px 0;
+        color: #ffeecf;
+    }
+
+    .section-title.order {
+        border-bottom: 1px dashed #ffe14f;
+        padding-bottom: 4px;
+    }
+
+    .summary-box p {
+        font-size: 0.75rem;
+        line-height: 1.6;
+        margin: 6px 0;
+        letter-spacing: -0.3px;
+    }
+
+    .summary-box .total-line {
+        font-size: 1.2rem;
+        margin-top: 20px;
+        color: #ffe14f;
+        text-align: center;
+    }
+
+    button {
+        margin-top: 30px;
+        padding: 16px 40px;
+        font-size: 1.2rem;
+        font-family: 'Press Start 2P';
+        background-color: #a14590;
+        color: #ffeecf;
+        border: none;
+        box-shadow: 10px 10px #70205d;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #c25ea8;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <form action="/returnToHome">
+        <h1>Thank You!</h1>
+
+        <p>Thank you for your order, <span class="name">{{ name }}</span>.</p>
+        <p>Your order will be delivered to:</p>
+        <p class="address">{{ address }}</p>
+        
+        <div class="summary-box">
+          <div class="section-title">Order Summary</div>
+          {% for pizza in pizzas %}
+            <p class="pizza-item">{{ pizza }}</p>
+          {% endfor %}
+          <p class="total-line"><strong>Total:</strong> {{ total }}</p>
+        </div>
+        
+        <button type="submit">Return to Home</button>
+        
+    </form>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Store Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #d28bcc;
+      font-family: 'Press Start 2P';
+      color: #ffeecf;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background-color: #00000040;
+      padding: 40px 30px;
+      border-radius: 25px;
+      box-shadow: 10px 10px #a14590;
+    }
+
+    h1, h3 {
+      color: #ffe14f;
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-bottom: 40px;
+    }
+
+    label {
+      display: block;
+      margin: 20px 0 8px;
+      font-size: 0.8rem;
+    }
+
+    input {
+      width: 60%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Press Start 2P';
+      font-size: 0.75rem;
+      background-color: #fff8e1;
+      color: #000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #ffffff14;
+      font-size: 0.6rem;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ffeecf;
+      color: #ffeecf;
+    }
+
+    th {
+      background-color: #ffe14f40;
+      color: #ffe14f;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 16px 40px;
+      font-size: 1rem;
+      font-family: 'Press Start 2P';
+      background-color: #e84118;
+      color: #ffe14f;
+      border: none;
+      box-shadow: 10px 10px #8b0000;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff5e3a;
+    }
+
+    .home-btn {
+      background-color: #a14590;
+      box-shadow: 10px 10px #70205d;
+      color: #ffeecf;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <form action="/quantityUpdate" method="POST">
+      <h1>Update Quantity</h1>
+
+      <label for="ingredientID">Ingredient ID:</label>
+      <input type="number" id="ingredientID" name="ingredientID" min="1" max="10" required>
+
+      <label for="quantityValue">Quantity:</label>
+      <input type="number" id="quantityValue" name="quantityValue" pattern="[0-9]+" required>
+
+      <button type="submit">Update Quantity</button>
+    </form>
+
+    <form>
+      <h3>Ingredient Inventory</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Ingredient ID</th>
+            <th>Ingredient Name</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for ingredient in ingredients %}
+          <tr>
+            <td>{{ ingredient[0] }}</td>
+            <td>{{ ingredient[1] }}</td>
+            <td>{{ ingredient[2] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </form>
+
+    <form action="/orders" method="POST">
+      <h3>Orders</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Delivery Address</th>
+            <th>Order Placement Time</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <td>{{ order[0] }}</td>
+            <td>{{ order[1] }}</td>
+            <td>{{ order[2] }}</td>
+            <td>{{ order[3] }}</td>
+            <td>{{ order[4] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button type="submit">Refresh Orders</button>
+    </form>
+
+    <form action="/returnHome" method="POST">
+      <button class="home-btn" type="submit">Return to Home</button>
+    </form>
+
+  </div>
+
+</body>
+
+</html>

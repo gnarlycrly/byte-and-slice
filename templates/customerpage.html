@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Customer Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * { 
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #d28bcc;
+      font-family: 'Press Start 2P';
+      color: #ffeecf;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      padding: 60px 30px;
+      background-color: #0000004d;
+      border-radius: 20px;
+      box-shadow: 10px 10px #a14590;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ffe14f;
+      margin-bottom: 40px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    select,
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-family: 'Press Start 2P';
+      font-size: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 20px 50px;
+      font-size: 1.2rem;
+      font-family: 'Press Start 2P', cursive;
+      background-color: #e84118;
+      color: #ffe14f;
+      border: none;
+      box-shadow: 10px 10px #8b0000;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff5e3a;
+    }
+
+    .home-btn {
+      background-color: #a14590;
+      box-shadow: 10px 10px #70205d;
+      color: #ffeecf;
+    }
+
+    .home-btn:hover { /* override the button hover color fot the return home button */
+      background-color: #ad569d;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="container"> 
+    <h1>Customer Page</h1>
+
+    <form action="/customerlogin" method="POST">
+      <label for="cLocation">Store location:</label>
+      <select id="cLocation" name="cLocation">
+        {% for store in stores %}
+        <option value="{{ store[0] }}">{{ store[0] }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="cName">Please enter your name:</label>
+      <input type="text" id="cName" name="cName" required>
+
+      <label for="cAddress">Your address:</label>
+      <input type="text" id="cAddress" name="cAddress" required>
+
+      <button type="submit">Confirm</button>
+    </form>
+
+    <form action="/returnHome" method="POST">
+      <button class="home-btn" type="submit">Return to Home</button>
+    </form>
+
+  </div>
+</body>
+
+</html>

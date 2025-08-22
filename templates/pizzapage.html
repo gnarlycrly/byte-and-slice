@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Pizza Page</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #d28bcc;
+      font-family: 'Press Start 2P';
+      color: #ffeecf;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 25px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      padding: 25px 30px;
+      background-color: #0000004d;
+      border-radius: 20px;
+      box-shadow: 10px 10px #a14590;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #ffe14f;
+      margin-bottom: 30px;
+    }
+    
+    .subheading {
+      font-size: 1.2rem;
+      color: #ffeecf;
+      margin: 30px 0 15px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .option-group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 15px;
+    }
+
+    .size-label {
+      background-color: #fff5cc;
+      border: 2px solid #ffb27d;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: #000;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      font-size: 0.75rem;
+    }
+
+    .size-label:hover {
+      background-color: #ffe69a;
+    }
+
+    .topping-label {
+      background-color: #ffecdb;
+      border: 2px solid #ffb27d;
+      border-radius: 10px;
+      padding: 10px 20px;
+      color: #000;
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+
+    .topping-label:hover {
+      background-color: #ffd6aa;
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+      accent-color: #d32f2f;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 16px 40px;
+      font-size: 1.2rem;
+      font-family: 'Press Start 2P';
+      background-color: #e84118;
+      color: #ffe14f;
+      border: none;
+      box-shadow: 10px 10px #8b0000;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff5e3a;
+    }
+
+    .home-btn {
+      background-color: #a14590;
+      box-shadow: 10px 10px #70205d;
+      color: #ffeecf;
+    }
+
+    .order-summary {
+      background-color: #fff5c81f;
+      border: 1.5px solid #ffe14f;
+      border-radius: 12px;
+      padding: 30px 20px;
+      margin-top: 50px;
+      box-shadow: 0 4px 8px #0000004d;
+    }
+
+    .order-summary h3 {
+      font-size: 1.2rem;
+      color: #ffe14f;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .pizza-item {
+      font-size: 0.7rem;
+      color: #ffeecf;
+      line-height: 1.6;
+      margin: 4px 0;
+      letter-spacing: -0.2px;
+    }
+
+    .total-line {
+      font-size: 1rem;
+      color: #ffe14f;
+      margin-top: 25px;
+      letter-spacing: 0.5px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <form action="/newPizza" method="POST" class="section">
+      <h1>Build-Your-Own Pizza</h3>
+
+      <div class="subheading">Choose a Size:</div>
+      <div class="option-group section">
+        <label class="size-label"><input type="radio" name="size" value="S" checked>Small</label>
+        <label class="size-label"><input type="radio" name="size" value="M">Medium</label>
+        <label class="size-label"><input type="radio" name="size" value="L">Large</label>
+      </div>
+
+      <div class="subheading">Choose Your Toppings:</div>
+      <div class="option-group section" style="max-width: 550px; margin: 0 auto;">
+        <label class="topping-label"><input type="checkbox" name="toppings" value="bellPepper">Bell Peppers</label>
+        <label class="topping-label"><input type="checkbox" name="toppings" value="jalapeno">Jalapenos</label>
+        <label class="topping-label"><input type="checkbox" name="toppings" value="olive">Olives</label>
+        <label class="topping-label"><input type="checkbox" name="toppings" value="pepperoni">Pepperoni</label>
+        <label class="topping-label"><input type="checkbox" name="toppings" value="pineapple">Pineapple</label>
+        <label class="topping-label"><input type="checkbox" name="toppings" value="sausage">Sausage</label>
+      </div>
+
+      <button type="submit">Add to Order</button>
+    </form>
+
+    <form action="/placeOrder" method="post" class="section order-summary">
+      <h3>Your Order</h3>
+      
+      {% for pizza in pizzas %}
+        <p class="pizza-item">{{pizza}}</p>
+      {% endfor %}
+      
+      <p class="total-line"><strong>Total:</strong> {{ total }}</p>
+      <button type="submit">Place Order</button>
+    </form>
+  
+    <form action="/returnToHome" class="section">
+      <button class="home-btn" type="submit">Return to Home</button>
+    </form>
+  </div>
+
+</body>
+
+</html>

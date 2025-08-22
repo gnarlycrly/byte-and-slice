@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Manager Page</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #d28bcc;
+      font-family: 'Press Start 2P';
+      color: #ffeecf;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+      padding: 60px 30px;
+      background-color: #0000004d;
+      border-radius: 20px;
+      box-shadow: 10px 10px #a14590;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ffe14f;
+      margin-bottom: 40px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 85%;
+      padding: 12px;
+      font-family: 'Press Start 2P';
+      font-size: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background-color: #fff8e1;
+      color: #000;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 20px 50px;
+      font-size: 1.2rem;
+      font-family: 'Press Start 2P';
+      background-color: #e84118;
+      color: #ffe14f;
+      border: none;
+      box-shadow: 10px 10px #8b0000;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #ff5e3a;
+    }
+
+    .home-btn {
+      background-color: #a14590;
+      box-shadow: 10px 10px #70205d;
+      color: #ffeecf;
+    }
+
+    .home-btn:hover {
+      background-color: #ad569d;
+    }
+
+    h4 { /* this is formatting for errors on invalid credentials*/
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #ffdd91;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Manager Page</h1>
+
+    <form action="/managerlogin" method="POST">
+      <label for="storeID">Store ID:</label>
+      <input type="text" id="storeID" name="storeID" pattern="[0-9]+" required>
+
+      <label for="managerID">Manager ID:</label>
+      <input type="text" id="managerID" name="managerID" pattern="[0-9]+" required>
+
+      <label for="managerPassword">Manager Password:</label>
+      <input type="password" id="managerPassword" name="managerPassword" required>
+
+      <button type="submit">Log In</button>
+
+      <h4>{{ header }}</h4> 
+    </form>
+
+    <form action="/returnHome" method="POST">
+      <button class="home-btn" type="submit">Return to Home</button>
+    </form>
+
+  </div>
+
+</body>
+
+</html>
