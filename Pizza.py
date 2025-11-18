@@ -1,8 +1,13 @@
-from flask import Flask, render_template, request, redirect
+import os
 import psycopg2
 from datetime import datetime
+from flask import Flask, render_template, request, redirect
+from dotenv import load_dotenv
+
 
 app = Flask(__name__)
+
+load_dotenv()
 
 storeID = 0
 orderList = []
@@ -25,13 +30,12 @@ class Pizza:
         self.sausage = sausage
         self.price = price
 
-conn = psycopg2.connect(
-            dbname="PizzaOrderingSystem",
-            user="postgres",
-            password="carlyava2",
-            host="localhost",
-            port="5432"
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set. Please define it in a .env file.")
+
+conn = psycopg2.connect(DATABASE_URL)
 
 @app.route('/')
 def index():
